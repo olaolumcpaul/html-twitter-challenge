@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter Replica</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: auto;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .container {
+        display: contents;
+      }
+
+      .sidebar {
+        grid-column: 1 / 2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        border-right: 1px solid #ccc;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        width: 100%;
+      }
+
+      .sidebar ul li {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .sidebar ul li i {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      .sidebar ul li img {
+        width: 30px;
+      }
+
+      .sidebar ul li button {
+        width: 100%;
+        padding: 10px;
+        background-color: #1da1f2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sidebar ul li button i {
+        margin-right: 5px;
+      }
+
+      .main-content {
+        grid-column: 2 / 3;
+        padding: 20px;
+        border-right: 1px solid #ccc;
+      }
+
+      .main-content header h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .tweet-box {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .tweet-box img {
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .tweet-box input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+      }
+
+      .tweet {
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+      }
+
+      .tweet-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .tweet-header img {
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .tweet-header div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tweet-header div strong {
+        font-size: 16px;
+      }
+
+      .tweet-header div span {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .tweet p {
+        font-size: 14px;
+      }
+
+      .tweet p span {
+        color: #1da1f2;
+        cursor: pointer;
+      }
+
+      .tweet p a {
+        color: #1da1f2;
+      }
+
+      .right-sidebar {
+        grid-column: 3 / 4;
+        padding: 20px;
+      }
+
+      .whats-happening {
+        background-color: #f5f8fa;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .whats-happening h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .news-item {
+        margin-bottom: 10px;
+      }
+
+      .news-item h3 {
+        font-size: 16px;
+      }
+
+      .news-item p {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .news-item span {
+        color: #1da1f2;
+      }
+
+      .right-sidebar button {
+        background-color: #1da1f2;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          grid-column: 1 / 2;
+          border-right: none;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .main-content {
+          grid-column: 1 / 2;
+          border-right: none;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .right-sidebar {
+          grid-column: 1 / 2;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="sidebar">
+        <ul>
+          <li><i class="fab fa-twitter"></i></li>
+          <li><i class="fas fa-home"></i> Home</li>
+          <li><i class="fas fa-hashtag"></i> Explore</li>
+          <li><i class="fas fa-bell"></i> Notifications</li>
+          <li><i class="fas fa-envelope"></i> Messages</li>
+          <li><i class="fas fa-bookmark"></i> Bookmarks</li>
+          <li><i class="fas fa-list"></i> Lists</li>
+          <li><i class="fas fa-user"></i> Profile</li>
+          <li><i class="fas fa-ellipsis-h"></i> More</li>
+          <li>
+            <button><i class="fas fa-feather-alt"></i> Tweet</button>
+          </li>
+        </ul>
+      </nav>
+      <main class="main-content">
+        <header>
+          <h1>Home</h1>
+        </header>
+        <div class="tweet-box">
+          <img
+            src="https://i.pinimg.com/474x/df/f8/03/dff803e9e1915cb6a48f1d6c1f44cb57.jpg"
+            alt="User Avatar"
+          />
+          <input type="text" placeholder="What's happening?" />
+        </div>
+        <div class="tweet">
+          <div class="tweet-header">
+            <img
+              src="https://mycyberuniverse.com/images/articles/Milena/how-save-memoji-as-png/thumbnail.png"
+              alt="User Avatar"
+            />
+            <div>
+              <strong>Eric Elliott</strong> Retweeted <span>@owocki</span> · 26m
+            </div>
+          </div>
+          <p>
+            me as an engineer, 2015: the CEOs vision is so hand-wavey 👋<br />me
+            as a CEO, 2021: (waves hand) this is my vision 🌅
+          </p>
+        </div>
+        <div class="tweet">
+          <div class="tweet-header">
+            <img
+              src="https://pbs.twimg.com/profile_images/1073893807228416005/vDiuFHxa_400x400.jpg"
+              alt="GroupDocs Avatar"
+            />
+            <div><strong>GroupDocs</strong> @GroupDocs</div>
+          </div>
+          <p>
+            GroupDocs Total for .NET is a compilation of every .NET
+            <span>#API</span> offered by <span>#GroupDocs</span>. We compile it
+            on a daily basis to ensure that it contains the most up-to-date
+            versions of each of our .NET document
+            <span>#automation</span> APIs.<br />Read more:
+            <a href="#">bit.ly/347331o</a>
+          </p>
+        </div>
+      </main>
+      <aside class="right-sidebar">
+        <section class="whats-happening">
+          <h2>What's happening</h2>
+          <div class="news-item">
+            <h3>
+              Bus hijacked by protesters and set alight on sixth night of unrest
+              in Northern Ireland
+            </h3>
+            <p>
+              Trending with <span>#Belfast</span>, <span>#NorthernIreland</span>
+            </p>
+          </div>
+          <div class="news-item">
+            <h3>#MeetTheRichardsons</h3>
+            <p>Brand new comedy from Dave’s favourite couple returns at 10pm</p>
+          </div>
+          <div class="news-item">
+            <h3>Alex Jones</h3>
+            <p>46.5K Tweets</p>
+          </div>
+          <div class="news-item">
+            <h3>Hong Kong</h3>
+            <p>36K Tweets</p>
+          </div>
+          <div class="news-item">
+            <h3>
+              New Zealand is virtually Covid-free. Just don’t try to buy a home
+              here
+            </h3>
+            <p>36K Tweets</p>
+          </div>
+          <button>Show more</button>
+        </section>
+      </aside>
+    </div>
+  </body>
+</html>
