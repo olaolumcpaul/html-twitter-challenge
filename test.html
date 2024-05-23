@@ -47,6 +47,13 @@
         margin: 10px 0;
         display: flex;
         align-items: center;
+        cursor: pointer;
+        padding: 5px 0;
+      }
+
+      .sidebar ul li:hover {
+        background-color: #e8f5fd;
+        border-radius: 20px;
       }
 
       .sidebar ul li i {
@@ -84,12 +91,15 @@
       .main-content header h1 {
         font-size: 24px;
         margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
       }
 
       .tweet-box {
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
       }
 
       .tweet-box img {
@@ -99,15 +109,64 @@
       }
 
       .tweet-box input {
-        width: 100%;
+        width: calc(100% - 70px);
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 20px;
       }
 
+      .tweet-box-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .tweet-box-icons .icons-left {
+        display: flex;
+        gap: 10px;
+      }
+
+      .tweet-box-icons i {
+        cursor: pointer;
+        color: #1da1f2;
+        font-size: 20px;
+      }
+
+      .tweet-box-icons i:hover {
+        color: #1a91da;
+      }
+
+      .tweet-box-icons .tweet-button {
+        background-color: #1da1f2;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .tweet-box-icons .tweet-button:hover {
+        background-color: #1a91da;
+      }
+
       .tweet {
         border-bottom: 1px solid #ccc;
         padding: 10px 0;
+      }
+
+      .user-retweeted {
+        color: #555;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+
+      .user-retweeted i {
+        margin-right: 5px;
       }
 
       .tweet-header {
@@ -149,6 +208,21 @@
         color: #1da1f2;
       }
 
+      .tweet-actions {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+      }
+
+      .tweet-actions i {
+        cursor: pointer;
+        color: #555;
+      }
+
+      .tweet-actions i:hover {
+        color: #1da1f2;
+      }
+
       .right-sidebar {
         grid-column: 3 / 4;
         padding: 20px;
@@ -167,6 +241,8 @@
 
       .news-item {
         margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
       }
 
       .news-item h3 {
@@ -244,20 +320,39 @@
           />
           <input type="text" placeholder="What's happening?" />
         </div>
+        <div class="tweet-box-icons">
+          <div class="icons-left">
+            <i class="fas fa-image"></i>
+            <i class="fas fa-file-alt"></i>
+            <i class="fas fa-chart-bar"></i>
+            <i class="fas fa-smile"></i>
+          </div>
+          <button class="tweet-button">Tweet</button>
+        </div>
         <div class="tweet">
+          <div class="user-retweeted">
+            <i class="fas fa-retweet"></i> Eric Elliott Retweeted
+          </div>
           <div class="tweet-header">
             <img
               src="https://mycyberuniverse.com/images/articles/Milena/how-save-memoji-as-png/thumbnail.png"
               alt="User Avatar"
             />
             <div>
-              <strong>Eric Elliott</strong> Retweeted <span>@owocki</span> · 26m
+              <strong>woki GITer of COINs</strong><span>@owocki</span> · 26m
             </div>
           </div>
           <p>
-            me as an engineer, 2015: the CEOs vision is so hand-wavey 👋<br />me
-            as a CEO, 2021: (waves hand) this is my vision 🌅
+            me as an engineer, 2015: the CEOs vision is so hand-wavey 👋<br />
+            <br />
+            me as a CEO, 2021: (waves hand) this is my vision 🌅
           </p>
+          <div class="tweet-actions">
+            <i class="fas fa-comment"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share"></i>
+          </div>
         </div>
         <div class="tweet">
           <div class="tweet-header">
@@ -275,6 +370,12 @@
             <span>#automation</span> APIs.<br />Read more:
             <a href="#">bit.ly/347331o</a>
           </p>
+          <div class="tweet-actions">
+            <i class="fas fa-comment"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-share"></i>
+          </div>
         </div>
       </main>
       <aside class="right-sidebar">
